@@ -1,0 +1,7 @@
+{
+  "animalName": "Test Dog",
+  "ownerName": "Test Owner",
+  "phoneNumbers": ["123-456-7890"],
+  "additionalNote": "Test note",
+  "animalTypeId": "68d19bc9b49c4e2b3e67906a"
+}

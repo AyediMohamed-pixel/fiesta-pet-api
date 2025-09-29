@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")  
+}
+
+model User {
+  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  username              String        @unique
+  password              String
+  fullName              String
+  roleId                String        @db.ObjectId
+  role                  Role          @relation(fields: [roleId], references: [id])
+  email                 String?       
+  blocked               Boolean
+  pets                  Pet[]         // Relation pour les animaux créés par cet utilisateur
+  createdAt             DateTime      @default(now()) 
+  updatedAt             DateTime      @updatedAt    
+}
+
+model Role {
+  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  label                 String        @unique
+  users                 User[]
+  createdAt             DateTime      @default(now()) 
+  updatedAt             DateTime      @updatedAt    
+}
+
+model Pet {
+  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  animalName            String
+  ownerName             String        // Manual field for now, will be replaced by User relation in the future
+  phoneNumbers          String[]
+  additionalNote        String?
+  animalTypeId          String        @db.ObjectId
+  animalType            AnimalType    @relation(fields: [animalTypeId], references: [id])
+  qrCode                String?
+  // Optional - for future integration
+  img_uri               String?
+  ownerId               String?       @db.ObjectId
+  owner                 User?         @relation(fields: [ownerId], references: [id])
+  createdAt             DateTime      @default(now()) 
+  updatedAt             DateTime      @updatedAt    
+}
+
+model AnimalType {
+  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  label                 String        @unique
+  pets                  Pet[]
+  createdAt             DateTime      @default(now()) 
+  updatedAt             DateTime      @updatedAt    
+}
