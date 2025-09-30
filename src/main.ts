@@ -26,6 +26,8 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
  
   const allowlist = [
+      'https://fiesta-pet.vercel.app/',
+      'https://fiesta-pet.vercel.app',
       'https://fiesta-pet-4iog.vercel.app/',
       'https://fiesta-pet-4iog.vercel.app',
       'http://localhost:8100',

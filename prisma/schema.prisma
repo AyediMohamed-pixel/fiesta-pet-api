@@ -36,6 +36,7 @@ model Pet {
   id                    String        @id @default(auto()) @map("_id") @db.ObjectId
   animalName            String
   ownerName             String        // Manual field for now, will be replaced by User relation in the future
+  adress                String        // Manual field for now, will be replaced by User relation in the future
   phoneNumbers          String[]
   additionalNote        String?
   animalTypeId          String        @db.ObjectId

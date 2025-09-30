@@ -27,6 +27,7 @@ export class AnimalService {
         data: {
           animalName: createAnimalDto.animalName,
           ownerName: createAnimalDto.ownerName,
+          adress: createAnimalDto.adress,
           phoneNumbers: createAnimalDto.phoneNumbers,
           additionalNote: createAnimalDto.additionalNote,
           animalTypeId: createAnimalDto.animalTypeId,
@@ -121,6 +122,7 @@ export class AnimalService {
         data: {
           ...(updateAnimalDto.animalName && { animalName: updateAnimalDto.animalName }),
           ...(updateAnimalDto.ownerName && { ownerName: updateAnimalDto.ownerName }),
+          ...(updateAnimalDto.adress && { adress: updateAnimalDto.adress }),
           ...(updateAnimalDto.phoneNumbers && { phoneNumbers: updateAnimalDto.phoneNumbers }),
           ...(updateAnimalDto.additionalNote !== undefined && { additionalNote: updateAnimalDto.additionalNote }),
           ...(updateAnimalDto.animalTypeId && { animalTypeId: updateAnimalDto.animalTypeId }),

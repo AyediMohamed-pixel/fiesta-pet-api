@@ -9,6 +9,10 @@ export class CreateAnimalDto {
   @IsNotEmpty()
   ownerName: string;
 
+  @IsString()
+  @IsNotEmpty()
+  adress: string;
+
   @IsArray()
   @ArrayMinSize(1, { message: 'At least one phone number is required' })
   @IsString({ each: true })
@@ -47,6 +51,11 @@ export class UpdateAnimalDto {
   ownerName?: string;
 
   @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  adress?: string;
+
+  @IsOptional()
   @IsArray()
   @ArrayMinSize(1, { message: 'At least one phone number is required' })
   @IsString({ each: true })
@@ -78,6 +87,7 @@ export class AnimalResponseDto {
   id: string;
   animalName: string;
   ownerName: string;
+  adress: string;
   phoneNumbers: string[];
   additionalNote?: string;
   animalTypeId: string;
